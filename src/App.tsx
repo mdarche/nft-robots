@@ -2,22 +2,21 @@ import React, { useState } from 'react';
 import Chance from 'chance';
 import { Global } from '@emotion/react';
 
-import { ReactComponent as DevieBot } from '../artwork/svg/stuffed/D_DDeviebot_stuffed.svg';
-import { ReactComponent as JohnnyBot } from '../artwork/svg/stuffed/D_DJohnnybot_stuffed.svg';
-import { ReactComponent as MaggieBot } from '../artwork/svg/stuffed/D_DMaggiebot_stuffed.svg';
-import { ReactComponent as SwervieBot } from '../artwork/svg/stuffed/D_DSwerviebot_stuffed.svg';
+import { ReactComponent as DevieBot } from './assets/devie.svg';
+// import { ReactComponent as JohnnyBot } from './assets/johnny.svg';
+// import { ReactComponent as MaggieBot } from './assets/maggie.svg';
+// import { ReactComponent as SwervieBot } from './assets/swervie.svg';
 import { background, base, color, arms, head, display } from './rarity';
 import { containsObject, formatMetadata } from './utils';
 import type { Traits } from './types';
-import robotTraits from '../artwork/robot-traits.json';
 
 var chance = new Chance();
 
 const bots = {
   Devie: <DevieBot />,
-  Johnny: <JohnnyBot />,
-  Maggie: <MaggieBot />,
-  Swervie: <SwervieBot />,
+  Johnny: <DevieBot />,
+  Maggie: <DevieBot />,
+  Swervie: <DevieBot />,
 };
 
 function App() {
@@ -53,7 +52,7 @@ function App() {
       // If combo already exists, recursively call this function to generate a new bot
       generateBot();
     } else {
-      // Else save it to local state, append to combo history, and increment token ID
+      // Save it to local state, append to combo history, and increment token ID
       setTraits(bot);
       setCombinations([...combinations, bot]);
       setTokenCount(tokenCount + 1);
@@ -62,7 +61,15 @@ function App() {
 
   return (
     <>
-      <Global styles={{ svg: { background: traits.background } }} />
+      <Global
+        styles={{
+          svg: { background: traits.background },
+          '.variant': { opacity: 0 },
+          [`.${traits.head}`]: { opacity: 1 },
+          [`.${traits.display}`]: { opacity: 1 },
+          [`.${traits.arms}`]: { opacity: 1 },
+        }}
+      />
       <div id="workspace">
         <div id="dock">
           <h1>Robot Generator</h1>

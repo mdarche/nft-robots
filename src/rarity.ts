@@ -32,8 +32,10 @@ export const background: RobotAttribute<'background'> = {
 /** Base */
 
 export const base: RobotAttribute<'base'> = {
-  variants: ['Devie', 'Johnny', 'Maggie', 'Swervie'],
-  rarity: [1, 1, 1, 1],
+  // variants: ['Devie', 'Johnny', 'Maggie', 'Swervie'],
+  // rarity: [1, 1, 1, 1],
+  variants: ['Devie'],
+  rarity: [1],
 };
 
 /** head */

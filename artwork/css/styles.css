@@ -71,7 +71,7 @@
   animation-fill-mode: none;
 }
 
-.devie #r_arm_jumbo_wrench,
+/* .devie #r_arm_jumbo_wrench,
 .devie #r_arm_magnet,
 .devie #r_arm_hinged_wrench {
   visibility: hidden;
@@ -92,7 +92,7 @@
 .devie #display_gastank_dial,
 .devie #display_gastank_glowy {
   visibility: hidden;
-}
+} */
 
 .colortest stop:nth-of-type(2) {
   stop-color: #0000ff;
