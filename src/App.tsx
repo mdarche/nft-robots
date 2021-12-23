@@ -6,9 +6,10 @@ import { ReactComponent as DevieBot } from '../artwork/svg/stuffed/D_DDeviebot_s
 import { ReactComponent as JohnnyBot } from '../artwork/svg/stuffed/D_DJohnnybot_stuffed.svg';
 import { ReactComponent as MaggieBot } from '../artwork/svg/stuffed/D_DMaggiebot_stuffed.svg';
 import { ReactComponent as SwervieBot } from '../artwork/svg/stuffed/D_DSwerviebot_stuffed.svg';
-import { background, base, color, arms, chest } from './rarity';
+import { background, base, color, arms, head, display } from './rarity';
 import { containsObject, formatMetadata } from './utils';
 import type { Traits } from './types';
+import robotTraits from '../artwork/robot-traits.json';
 
 var chance = new Chance();
 
@@ -26,8 +27,9 @@ function App() {
     base: 'Devie',
     background: '#d0e4ff',
     color: 'gray',
-    arms: 'arm1',
-    chest: 'default',
+    head: 'jumbo_screen',
+    arms: 'buff',
+    display: 'heartbeat',
   });
 
   /**
@@ -38,10 +40,11 @@ function App() {
   const generateBot = (e?: React.MouseEvent) => {
     const bot: Traits = {
       base: chance.weighted(base.variants, base.rarity),
+      head: chance.weighted(head.variants, head.rarity),
       background: chance.weighted(background.variants, background.rarity),
       color: chance.weighted(color.variants, color.rarity),
       arms: chance.weighted(arms.variants, arms.rarity),
-      chest: chance.weighted(chest.variants, chest.rarity),
+      display: chance.weighted(display.variants, display.rarity),
     };
 
     const isUnique = !containsObject(bot, combinations);
@@ -66,25 +69,27 @@ function App() {
           <button className="generate-btn" onClick={generateBot}>
             Generate
           </button>
-          <div className="robot-count">
-            <h4>Unique Robots:</h4>
-            <div>{tokenCount}</div>
-          </div>
-          <div className="traits">
-            <h4>Current Traits:</h4>
-            <div className="trait-container">
-              <pre>{JSON.stringify(traits, null, ' ')}</pre>
+          <div className="dock-content">
+            <div className="robot-count">
+              <h4>Unique Robots:</h4>
+              <div>{tokenCount}</div>
+            </div>
+            <div className="traits">
+              <h4>Current Traits:</h4>
+              <div className="trait-container">
+                <pre>{JSON.stringify(traits, null, ' ')}</pre>
+              </div>
+            </div>
+            <div className="metadata">
+              <h4>Metadata:</h4>
+              <div className="trait-container">
+                <pre>{JSON.stringify(formatMetadata(traits), null, ' ')}</pre>
+              </div>
             </div>
           </div>
-          <div className="metadata">
-            <h4>Metadata:</h4>
-            <div className="trait-container">
-              <pre>{JSON.stringify(formatMetadata(traits), null, ' ')}</pre>
-            </div>
+          <div id="art-preview">
+            <div className="art-container">{bots[traits.base]}</div>
           </div>
-        </div>
-        <div id="art-preview">
-          <div className="art-container">{bots[traits.base]}</div>
         </div>
       </div>
     </>

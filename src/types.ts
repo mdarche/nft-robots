@@ -2,8 +2,9 @@
 
 export interface Traits {
   base: 'Devie' | 'Maggie' | 'Johnny' | 'Swervie';
-  arms: string;
-  chest: string;
+  arms: 'buff' | 'magnet' | 'hinged_wrench' | 'jumbo_wrench' | 'magic';
+  display: 'heartbeat' | 'gastank' | 'lightwheel';
+  head: 'number5' | 'jumbo_screen' | 'walkie_talkie' | 'space_helmet';
   color: string;
   background: string;
 }

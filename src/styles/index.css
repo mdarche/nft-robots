@@ -20,13 +20,18 @@ code {
   width: 400px;
   border-right: 1px solid gainsboro;
   background: #f7f7f7;
-  padding: 20px;
   overflow: scroll;
   padding-bottom: 40px;
 }
 
+.dock-content {
+  padding: 20px;
+}
+
 h1 {
   text-align: center;
+  border-bottom: 1px solid gainsboro;
+  padding-bottom: 25px;
 }
 
 .generate-btn {

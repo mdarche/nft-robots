@@ -14,8 +14,10 @@ type RobotAttribute<T> = {
     ? Traits['background'][]
     : T extends 'color'
     ? Traits['color'][]
-    : T extends 'chest'
-    ? Traits['chest'][]
+    : T extends 'display'
+    ? Traits['display'][]
+    : T extends 'head'
+    ? Traits['head'][]
     : Traits['arms'][];
   rarity: number[];
 };
@@ -34,6 +36,13 @@ export const base: RobotAttribute<'base'> = {
   rarity: [1, 1, 1, 1],
 };
 
+/** head */
+
+export const head: RobotAttribute<'head'> = {
+  variants: ['number5', 'jumbo_screen', 'walkie_talkie', 'space_helmet'],
+  rarity: [1, 1, 1, 1],
+};
+
 /** Color */
 
 export const color: RobotAttribute<'color'> = {
@@ -44,13 +53,13 @@ export const color: RobotAttribute<'color'> = {
 /** Arms */
 
 export const arms: RobotAttribute<'arms'> = {
-  variants: ['arm1', 'arm2', 'arm3', 'arm4'],
-  rarity: [1, 1, 1, 1],
+  variants: ['buff', 'magnet', 'hinged_wrench', 'jumbo_wrench', 'magic'],
+  rarity: [1, 1, 1, 1, 1],
 };
 
-/** Chest */
+/** display */
 
-export const chest: RobotAttribute<'chest'> = {
-  variants: ['dial', 'switch', 'clock', 'computer'],
-  rarity: [1, 1, 1, 1],
+export const display: RobotAttribute<'display'> = {
+  variants: ['heartbeat', 'gastank', 'lightwheel'],
+  rarity: [1, 1, 1],
 };
